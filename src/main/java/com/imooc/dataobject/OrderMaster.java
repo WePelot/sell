@@ -2,13 +2,16 @@ package com.imooc.dataobject;
 
 import com.imooc.enums.OrderStatusEnum;
 import com.imooc.enums.PayStatusEnum;
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+import lombok.Data;
 
 /**
  * Created by hongcj

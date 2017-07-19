@@ -1,11 +1,11 @@
 package com.imooc.dataobject;
 
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.data.annotation.Id;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import java.math.BigDecimal;
+import javax.persistence.Id;
+
+import lombok.Data;
 
 /**
  * Created by hongcj
@@ -13,7 +13,6 @@ import java.math.BigDecimal;
  */
 @Entity
 @Data
-@DynamicUpdate
 public class OrderDetail {
     @Id
     private String detailId;

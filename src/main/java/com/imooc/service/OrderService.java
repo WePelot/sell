@@ -7,8 +7,7 @@
  */
 package com.imooc.service;
 
-import com.imooc.dataobject.ProductInfo;
-import com.imooc.dto.CartDTO;
+import com.imooc.dto.OrderDTO;
 
 import java.util.List;
 
@@ -16,26 +15,28 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * 商品信息
+ * 订单Service
  *
  * @author hongcj
  * @version V1.0
- * @since 2017-07-17 09:59
+ * @since 2017-07-19 13:53
  */
-public interface ProductInfoServcie {
-    ProductInfo findOne(String productId);
+public interface OrderService {
+    /*创建订单*/
+    OrderDTO create(OrderDTO orderDTO);
 
-    /*查询所有上架的列表*/
-    List<ProductInfo> findUpAll();
+    /*查询单个订单*/
+    OrderDTO findOne(String orderId);
 
-    /*分页查询所有商品*/
-    Page<ProductInfo> findAll(Pageable pageable);
+    /* 查询订单列表 */
+    Page<OrderDTO> findList(String buyerOpenId, Pageable pageable);
 
-    ProductInfo save(ProductInfo productInfo);
+    /* 取消订单*/
+    OrderDTO cancel(OrderDTO orderDTO);
 
-    /*减库存*/
-    void decreaseStock(List<CartDTO> cartDTOList);
+    /* 完结订单*/
+    OrderDTO finish(OrderDTO orderDTO);
 
-    /*加库存*/
-    void increaseStock(List<CartDTO> cartDTOList);
+    /* 支付订单 */
+    OrderDTO paid(OrderDTO orderDTO);
 }

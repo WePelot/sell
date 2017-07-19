@@ -6,9 +6,11 @@ spring:
     url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
+#  返回的json参数，如果参数为空，则该参数返回给前端
+  jackson:
+    default-property-inclusion: non_null
 server:
   context-path: /sell
-
 
 
 #logging:

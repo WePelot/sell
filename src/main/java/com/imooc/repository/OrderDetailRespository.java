@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface OrderDetailRespository extends JpaRepository<OrderDetail,String>{
     //根据订单ID获取订单详情
-    List<OrderDetail> findByOrderID(String orderId);
+    List<OrderDetail> findByOrderId(String orderId);
 }
