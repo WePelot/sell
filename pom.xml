@@ -47,6 +47,19 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
+		<!-- @ConfigurationProperties报spring boot configuration annotation processor not found in classpath的解决方案，
+		但不加不影响程序的运行，这里先不加 -->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>-->
+
 		<!-- @Data注解，自动生成构造器、getter、setter、equals、hashcode、toString-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -59,11 +72,18 @@
 			<artifactId>gson</artifactId>
 		</dependency>
 
-		<!-- 微信第三方SDK-->
+		<!-- 微信授权第三方SDK-->
 		<dependency>
 			<groupId>com.github.binarywang</groupId>
 			<artifactId>weixin-java-mp</artifactId>
 			<version>2.7.0</version>
+		</dependency>
+
+		<!-- 微信支付第三方SDK -->
+		<dependency>
+			<groupId>cn.springboot</groupId>
+			<artifactId>best-pay-sdk</artifactId>
+			<version>1.1.0</version>
 		</dependency>
 
 	</dependencies>

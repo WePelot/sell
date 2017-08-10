@@ -219,4 +219,19 @@ returnUrl: http://xxx.com/abc  //【必填】
 http://xxx.com/abc?openid=oZxSYw5ldcxv6H0EU67GgSXOUrVg
 ```
 
+###支付订单
 
+```
+重定向 /sell/pay/create
+```
+
+参数
+
+```
+orderId:23456789345678
+returnUrl:http://xx.com/abc/order/23456789345678
+```
+返回
+```
+http://xx.com/abc/order/23456789345678
+```

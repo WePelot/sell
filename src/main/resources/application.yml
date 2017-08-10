@@ -14,8 +14,20 @@ server:
   port: 8099
 #微信公众号的id和secert
 wechat:
-  mpAppid: wxfc26418b74dcb0a8
+#  mpAppid: wxfc26418b74dcb0a8
+#  mpAppSecert: fadb448b94aa080266315a3607b689ea
+#  mchId: 1483469312
+#  mchKey: 06C56A89949D617xxxxxxxxxxx
+#  keyPath: G:\学习\微信授权付款\微信支付\h5.p12
+#  notifyUrl: http://sellweb.natapp1.cc/sell/pay/notify
+
+  #借用的支付账号
+  mpAppid: wxd898fcb01713c658
   mpAppSecert: fadb448b94aa080266315a3607b689ea
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: G:\学习\微信授权付款\微信支付\h5.p12
+  notifyUrl: http://sellweb.natapp1.cc/sell/pay/notify
 #项目对应URL
 projectUrl:
   wechatMpAuthorize: http://sellweb.natapp1.cc

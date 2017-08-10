@@ -5,22 +5,16 @@
  * You shall not disclose such Confidential Information and shall use it only 
  * in accordance with the terms of the license agreement you entered into with GuaHao.com.
  */
-package com.imooc.config;
+package com.imooc.service;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
-
-import lombok.Data;
+import com.imooc.dto.OrderDTO;
 
 /**
- * 项目路径配置
+ *
  * @author hongcj
  * @version V1.0
- * @since 2017-08-09 15:02
+ * @since 2017-08-10 10:10
  */
-@Component
-@Data
-@ConfigurationProperties(prefix = "projectUrl")
-public class ProjectUrlConfig {
-    private String wechatMpAuthorize;
+public interface PayService {
+    void create(OrderDTO orderDTO);
 }
