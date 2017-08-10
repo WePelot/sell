@@ -8,6 +8,7 @@
 package com.imooc.service;
 
 import com.imooc.dto.OrderDTO;
+import com.lly835.bestpay.model.PayResponse;
 
 /**
  *
@@ -16,5 +17,5 @@ import com.imooc.dto.OrderDTO;
  * @since 2017-08-10 10:10
  */
 public interface PayService {
-    void create(OrderDTO orderDTO);
+    PayResponse create(OrderDTO orderDTO);
 }
