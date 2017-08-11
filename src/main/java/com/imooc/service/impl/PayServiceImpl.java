@@ -35,7 +35,7 @@ public class PayServiceImpl implements PayService {
     private BestPayServiceImpl bestPayService;
 
     @Override
-    public void create(OrderDTO orderDTO) {
+    public PayResponse create(OrderDTO orderDTO) {
         PayRequest payRequest = new PayRequest();
         //支付方式."微信公众账号支付"
         payRequest.setPayTypeEnum(BestPayTypeEnum.WXPAY_H5);
@@ -50,5 +50,6 @@ public class PayServiceImpl implements PayService {
         log.info("【微信支付】 request={}", JsonUtil.toJson(payRequest));
         PayResponse payResponse = bestPayService.pay(payRequest);
         log.info("【微信支付】 response={}",JsonUtil.toJson(payResponse));
+        return payResponse;
     }
 }
