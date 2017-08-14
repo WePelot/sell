@@ -75,7 +75,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() throws Exception {
-        OrderDTO result = orderService.findOne("1500451201853203101");
+        OrderDTO result = orderService.findOne("1500992569458388240");
         Assert.assertNotNull(result);
     }
 

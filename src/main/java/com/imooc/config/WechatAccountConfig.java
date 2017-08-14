@@ -23,15 +23,26 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "wechat")
 public class WechatAccountConfig {
     /**
-     * 公众号APPID
+     * 公众号APPID(自己的测试号)
      */
     private String mpAppid;
 
     /**
-     * 公众号APPSercert
+     * 公众号APPSercert（自己的测试号）
      */
     private String mpAppSecert;
 
+
+
+    /**
+     * 公众号APPID(自己的测试好)
+     */
+    private String mcMpAppid;
+
+    /**
+     * 公众号APPSercert（自己的测试号）
+     */
+    private String mcMpAppSecert;
     /**
      * 商户号
      */

@@ -57,10 +57,10 @@ public class ProductInfoServiceImplTest {
     public void save() throws Exception {
         ProductInfo productInfo = new ProductInfo();
         productInfo.setProductId("123457");
-        productInfo.setProductName("皮皮虾");
-        productInfo.setProductPrice(new BigDecimal(12.50));
+        productInfo.setProductName("肉松饼");
+        productInfo.setProductPrice(new BigDecimal(6.50));
         productInfo.setProductStock(100);
-        productInfo.setProductDescription("好吃的虾");
+        productInfo.setProductDescription("好吃的肉松饼");
         productInfo.setProductIcon("http://www.baidu.com/1.jpg");
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         productInfo.setCategoryType(2);
