@@ -65,6 +65,7 @@ public class PayController {
     @ResponseBody
     public ModelAndView pay(@RequestParam("orderId") String orderId,
         @RequestParam("returnUrl") String returnUrl,
+        @RequestParam("relopenid") String relopenid,
         Map<String,Object> map){
         //1.查询订单
         OrderDTO orderDTO = orderService.findOne(orderId);

@@ -39,10 +39,10 @@ public class WechatMpConfig {
     public WxMpConfigStorage wxMpConfigStorage(){
         WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();
         //设置APPID和APPSercert
-        wxMpConfigStorage.setAppId(wechatAccountConfig.getMpAppid());
-        wxMpConfigStorage.setSecret(wechatAccountConfig.getMpAppSecert());
-//        wxMpConfigStorage.setAppId(wechatAccountConfig.getMchId());
-//        wxMpConfigStorage.setSecret(wechatAccountConfig.getMcMpAppSecert());
+//        wxMpConfigStorage.setAppId(wechatAccountConfig.getMpAppid());
+//        wxMpConfigStorage.setSecret(wechatAccountConfig.getMpAppSecert());
+        wxMpConfigStorage.setAppId(wechatAccountConfig.getMchId());
+        wxMpConfigStorage.setSecret(wechatAccountConfig.getMcMpAppSecert());
         return wxMpConfigStorage;
     }
 }

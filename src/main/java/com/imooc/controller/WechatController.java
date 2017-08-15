@@ -40,33 +40,14 @@ public class WechatController {
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
 
         //以下下是自己有服务号时使用的方法
-//        String url = projectUrlConfig.getWechatMpAuthorize() + "/wechat/userInfo";
-//        //因为测试号没办法进行支付，这里用的为师兄干货这个测试服务号进行认证
-//        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
-//        log.info("【微信网页授权】 获取code, result={}",redirectUrl);
-//        return "redirect:" + redirectUrl;
+        String url = projectUrlConfig.getWechatMpAuthorize() + "/wechat/userInfo";
+        //因为测试号没办法进行支付，这里用的为师兄干货这个测试服务号进行认证
+        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
+        log.info("【微信网页授权】 获取code, result={}",redirectUrl);
+        return "redirect:" + redirectUrl;
 
         //以下为使用借用的服务号的使用方法
-        RestTemplate template = new RestTemplate();
-//        template.getMessageConverters().add(new WxMappingJackson2HttpMessageConverter());
-        String url = "http://sell.springboot.cn/sell/wechat/authorize?returnUrl=http://sell.springboot.cn/openid.html";
-//        String response = template.getForObject(url, String.class);
-//        return response;
 
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "text/html");
-        headers.add(
-                "Accept",
-                "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,image/webp,*/*;q=0.8");
-        headers.add("Accept-Encoding", "gzip, deflate, sdch");
-        headers.add("Cache-Control", "max-age=0");
-        headers.add("Connection", "keep-alive");
-        HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-        ResponseEntity<String> responseEntity = template.exchange(url,
-                HttpMethod.GET, requestEntity, String.class);
-        HttpStatus status = responseEntity.getStatusCode();
-        return String.valueOf(status.is2xxSuccessful());
     }
 
     @GetMapping("/userInfo")
