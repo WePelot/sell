@@ -46,8 +46,7 @@ public class PayServiceImpl implements PayService {
         //订单名字.
         payRequest.setOrderName(ORDER_NAME);
         //微信openid, 仅微信支付时需要
-//        payRequest.setOpenid(orderDTO.getBuyerOpenid());
-        payRequest.setOpenid("oTgZpwW-QjZZvXJT0jfMSIeBXT-k");
+        payRequest.setOpenid(orderDTO.getBuyerOpenid());
         log.info("【微信支付】 request={}", JsonUtil.toJson(payRequest));
         PayResponse payResponse = bestPayService.pay(payRequest);
         log.info("【微信支付】 response={}",JsonUtil.toJson(payResponse));
