@@ -43,16 +43,6 @@ public class PayController {
     private PayService payService;
 
     /**
-     * 这个为进行跳转的地址
-     */
-    @GetMapping
-    public String payRedirect(@RequestParam("orderId") String orderId,
-                              @RequestParam("returnUrl") String returnUrl){
-        return "redirect:" + PAY_URL + "&orderId=" + orderId + "&returnUrl=" + returnUrl;
-    }
-
-
-    /**
      * 借用公众号的回调地址
      * 请求示意图
      支付授权目录 -> 你的外网 -> 你的电脑,这里的openId为与所借公众号的openId相对应
