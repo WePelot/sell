@@ -34,14 +34,14 @@ public class ProductInfoRepositoryTest {
     @Test
     public void saveTest(){
         ProductInfo productInfo = new ProductInfo();
-        productInfo.setProductId("123456");
-        productInfo.setProductName("八宝粥");
-        productInfo.setProductPrice(new BigDecimal(3.50));
+        productInfo.setProductId("223456");
+        productInfo.setProductName("鸡胸肉");
+        productInfo.setProductPrice(new BigDecimal(10.50));
         productInfo.setProductStock(100);
-        productInfo.setProductDescription("好喝的粥");
+        productInfo.setProductDescription("健身食品");
         productInfo.setProductIcon("http://www.baidu.com/1.jpg");
         productInfo.setProductStatus(0);
-        productInfo.setCategoryType(2);
+        productInfo.setCategoryType(3);
         ProductInfo save = productInfoRepository.save(productInfo);
         Assert.assertNotNull(save);
     }

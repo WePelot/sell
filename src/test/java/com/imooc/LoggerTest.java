@@ -18,8 +18,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- *
  * @author hongcj
+ *
  * @version V1.0
  * @since 2017-07-12 10:28
  */

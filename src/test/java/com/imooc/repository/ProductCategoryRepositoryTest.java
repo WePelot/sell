@@ -34,7 +34,7 @@ public class ProductCategoryRepositoryTest {
 
     @Test
     public void saveTest(){
-        ProductCategory productCategory = new ProductCategory("女生最爱",3);
+        ProductCategory productCategory = new ProductCategory("测试",3);
         productCategoryRepository.save(productCategory);
     }
 
