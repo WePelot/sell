@@ -27,7 +27,7 @@ wechat:
   mchId: 1483469312
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath: F:\deployer\Study\sell\h5.p12
-  notifyUrl: http://sellweb.natapp1.cc/sell/pay/notify
+  notifyUrl: http://sellweb.natapp1.cc/pay/notify
 #项目对应URL
 projectUrl:
   wechatMpAuthorize: http://sellweb.natapp1.cc
