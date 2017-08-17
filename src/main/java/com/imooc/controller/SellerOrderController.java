@@ -8,10 +8,10 @@
 package com.imooc.controller;
 
 import com.imooc.dto.OrderDTO;
+import com.imooc.enums.ResultEnum;
+import com.imooc.exception.SellException;
 import com.imooc.service.OrderService;
-
-import java.util.Map;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 /**
  * 卖家端
@@ -28,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("/seller/order")
+@Slf4j
 public class SellerOrderController {
     @Autowired
     private OrderService orderService;
@@ -46,6 +49,31 @@ public class SellerOrderController {
         PageRequest pageRequest = new PageRequest(page - 1 ,size);
         Page<OrderDTO> list = orderService.findList(pageRequest);
         map.put("list",list);
+        map.put("currentPage",page);
+        map.put("size",size);
         return new ModelAndView("order/list",map);
+    }
+
+    /**
+     * 取消订单
+     * @param orderId
+     * @return
+     */
+    @RequestMapping("/cancel")
+    public ModelAndView cancel(@RequestParam String orderId,
+                    Map<String,Object> map){
+        try{
+            OrderDTO orderDTO = orderService.findOne(orderId);
+            orderService.cancel(orderDTO);
+        }catch (SellException e){
+            map.put("errorMsg", ResultEnum.ORDER_NOT_EXIST.getMsg());
+            //跳转到列表页
+            map.put("redirectUrl","/seller/order/list");
+            return new ModelAndView("common/error",map);
+        }
+        map.put("errorMsg", ResultEnum.ORDER_CANCEL_SUCCESS.getMsg());
+        //跳转到列表页
+        map.put("redirectUrl","/seller/order/list");
+        return new ModelAndView("common/success");
     }
 }
