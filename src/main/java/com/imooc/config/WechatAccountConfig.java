@@ -35,12 +35,12 @@ public class WechatAccountConfig {
 
 
     /**
-     * 公众号APPID(自己的测试好)
+     * 公众号APPID(借用的的公众号)
      */
     private String mcMpAppid;
 
     /**
-     * 公众号APPSercert（自己的测试号）
+     * 公众号APPSercert(借用的的公众号)
      */
     private String mcMpAppSecert;
     /**

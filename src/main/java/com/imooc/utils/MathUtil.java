@@ -5,22 +5,23 @@
  * You shall not disclose such Confidential Information and shall use it only 
  * in accordance with the terms of the license agreement you entered into with GuaHao.com.
  */
-package com.imooc.service;
-
-import com.imooc.dto.OrderDTO;
-import com.lly835.bestpay.model.PayResponse;
-import com.lly835.bestpay.model.RefundResponse;
+package com.imooc.utils;
 
 /**
- *
  * @author hongcj
  * @version V1.0
- * @since 2017-08-10 10:10
+ * @since 2017-08-17 14:22
  */
-public interface PayService {
-    PayResponse create(OrderDTO orderDTO);
+public class MathUtil {
+    private static final Double MONEY_RANGE = 0.01;
 
-    PayResponse notify(String notifyData);
-
-    RefundResponse refund(OrderDTO orderDTO);
+    //比较金额是否相同，这里少于0.01则认为两个金额相同
+    public static boolean equal(Double a, Double b) {
+        double abs = Math.abs(a - b);
+        if (abs < MONEY_RANGE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

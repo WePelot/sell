@@ -18,9 +18,13 @@ import com.lly835.bestpay.model.PayResponse;
 import java.util.Map;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -55,7 +59,6 @@ public class PayController {
     @ResponseBody
     public ModelAndView pay(@RequestParam("orderId") String orderId,
         @RequestParam("returnUrl") String returnUrl,
-//        @RequestParam("relopenid") String relopenid,
         Map<String,Object> map){
         //1.查询订单
         OrderDTO orderDTO = orderService.findOne(orderId);
@@ -67,11 +70,22 @@ public class PayController {
         //发起支付
         PayResponse payResponse = payService.create(orderDTO);
         map.put("payResponse",payResponse);
-        map.put("returnUrl",returnUrl);
+        map.put("returnUrl",returnUrl + "/#/order/" + orderId);
         return new ModelAndView("pay/create",map);
     }
 
-
+    /**
+     * 接收微信异步通知
+     * @param notifyData
+     * @return
+     */
+    @PostMapping("/pay/notify")
+    public ModelAndView notify(@RequestBody String notifyData){
+        //商户处理异步通知
+        payService.notify(notifyData);
+        //告知微信处理结果
+        return new ModelAndView("pay/success");
+    }
 
 }
 

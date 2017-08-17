@@ -20,6 +20,7 @@ import com.imooc.exception.SellException;
 import com.imooc.repository.OrderDetailRespository;
 import com.imooc.repository.OrderMasterRepository;
 import com.imooc.service.OrderService;
+import com.imooc.service.PayService;
 import com.imooc.service.ProductInfoServcie;
 import com.imooc.utils.KeyUtil;
 
@@ -55,6 +56,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+
+    @Autowired
+    private PayService payService;
 
     /**
      * 前端接口参数
@@ -163,7 +167,7 @@ public class OrderServiceImpl implements OrderService {
         productInfoServcie.increaseStock(cartDTOList);
         //如果已支付, 需要退款
         if(PayStatusEnum.SUCCESS.getCode().equals(orderDTO.getPayStatus())){
-
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }
