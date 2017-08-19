@@ -38,4 +38,10 @@ public interface ProductInfoServcie {
 
     /*加库存*/
     void increaseStock(List<CartDTO> cartDTOList);
+
+    /*上架*/
+    ProductInfo onSale(String productId);
+
+    /*下架*/
+    ProductInfo OffSale(String productId);
 }

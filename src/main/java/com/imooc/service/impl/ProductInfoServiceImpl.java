@@ -16,6 +16,7 @@ import com.imooc.repository.ProductInfoRepository;
 import com.imooc.service.ProductInfoServcie;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -85,5 +86,41 @@ public class ProductInfoServiceImpl implements ProductInfoServcie {
             productInfo.setProductStock(result);
             productInfoRepository.save(productInfo);
         }
+    }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+        ProductInfo productInfo = productInfoRepository.findOne(productId);
+        if(Objects.isNull(productInfo)){
+            //商品不存在
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(ProductStatusEnum.DOWN.getCode().equals(productInfo.getProductStatus())){
+            //将商品状态改为上架
+            productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+            productInfoRepository.save(productInfo);
+        }else{
+            //商品状态不正确
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        return productInfo;
+    }
+
+    @Override
+    public ProductInfo OffSale(String productId) {
+        ProductInfo productInfo = productInfoRepository.findOne(productId);
+        if(Objects.isNull(productInfo)){
+            //商品不存在
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(ProductStatusEnum.UP.getCode().equals(productInfo.getProductStatus())){
+            //将商品状态改为下架
+            productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+            productInfoRepository.save(productInfo);
+        }else{
+            //商品状态不正确
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        return productInfo;
     }
 }
