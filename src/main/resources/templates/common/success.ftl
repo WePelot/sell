@@ -13,7 +13,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
                     成功!
-                </h4> <strong>${errorMsg!""}</strong><a href="${redirectUrl}" class="alert-link">3s后自动跳转</a>
+                </h4> <strong>${errorMsg!""}</strong><a href="${redirectUrl}" class="alert-link">1s后自动跳转</a>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
 </body>
 
 <script>
-    setTimeout('location.href="${redirectUrl}"', 3000);
+    setTimeout('location.href="${redirectUrl}"', 1000);
 </script>
 
 </html>
