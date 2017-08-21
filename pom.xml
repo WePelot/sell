@@ -52,14 +52,6 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-		<!-- @ConfigurationProperties报spring boot configuration annotation processor not found in classpath的解决方案，
-		但不加不影响程序的运行，这里先不加 -->
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>-->
-
 		<!-- @Data注解，自动生成构造器、getter、setter、equals、hashcode、toString-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -85,6 +77,13 @@
 			<artifactId>best-pay-sdk</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

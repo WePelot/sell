@@ -9,6 +9,9 @@ spring:
 #  返回的json参数，如果参数为空，则该参数返回给前端
   jackson:
     default-property-inclusion: non_null
+  redis:
+    host: 192.168.119.103
+    port: 6379
 server:
 #  context-path: /sell
   port: 8099
@@ -24,11 +27,13 @@ wechat:
   keyPath: G:\学习\微信授权付款\微信支付\h5.p12
   notifyUrl: http://sellweb.natapp1.cc/pay/notify
   #微信开放平台的openid
-  openAppid:
-  openAppSecert:
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e
 #项目对应URL
 projectUrl:
   wechatMpAuthorize: http://sellweb.natapp1.cc
+  wechatOpenAuthorize: http:/sellweb.natapp1.cc
+  sell: http:/sellweb.natapp1.cc
 
 #logging:
 #  pattern:

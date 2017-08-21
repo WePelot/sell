@@ -25,7 +25,7 @@ public class SellerInfoRepositoryTest {
     public void add() throws Exception {
         SellerInfo sellerInfo = new SellerInfo();
         sellerInfo.setId(KeyUtil.genUniqueKey());
-        sellerInfo.setOpenid("oTgZpwS5cH2oGp4cfGb4rZPF2dbY");
+        sellerInfo.setOpenid("abc");
         sellerInfo.setUsername("admin");
         sellerInfo.setPassword("admin");
         SellerInfo result = sellerInfoRepository.save(sellerInfo);

@@ -22,5 +22,19 @@ import lombok.Data;
 @Data
 @ConfigurationProperties(prefix = "projectUrl")
 public class ProjectUrlConfig {
+
+    /**
+     * 微信公众平台授权url
+     */
     private String wechatMpAuthorize;
+
+    /**
+     * 微信开发平台授权url
+     */
+    private String wechatOpenAuthorize;
+
+    /**
+     * 系统url
+     */
+    private String sell;
 }
