@@ -16,22 +16,19 @@ server:
 wechat:
   mpAppid: wxfc26418b74dcb0a8
   mpAppSecert: fadb448b94aa080266315a3607b689ea
-#  mchId: 1483469312
-#  mchKey: 06C56A89949D617xxxxxxxxxxx
-#  keyPath: G:\学习\微信授权付款\微信支付\h5.p12
-#  notifyUrl: http://sellweb.natapp1.cc/sell/pay/notify
-
   #借用的支付账号
   mcMpAppid: wxd898fcb01713c658
   mcMpAppSecert: fadb448b94aa080266315a3607b689ea
   mchId: 1483469312
   mchKey: C5245D70627C1F8E9964D494B0735025
-  keyPath: F:\deployer\Study\sell\h5.p12
+  keyPath: G:\学习\微信授权付款\微信支付\h5.p12
   notifyUrl: http://sellweb.natapp1.cc/pay/notify
+  #微信开放平台的openid
+  openAppid:
+  openAppSecert:
 #项目对应URL
 projectUrl:
   wechatMpAuthorize: http://sellweb.natapp1.cc
-#  wechatMpAuthorize: http://sell.springboot.cn
 
 #logging:
 #  pattern:
@@ -41,4 +38,5 @@ projectUrl:
 #  file: "E:/logs/sell/sell.log"
 #  #没效果？？
 #  level: debug
-##  com.imooc.LoggerTest: debug
+#  com.imooc.LoggerTest: debug
+#  com.imooc: debug

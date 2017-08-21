@@ -34,6 +34,9 @@ public class WechatController {
     private WxMpService wxMpService;
 
     @Autowired
+    private WxMpService wxOpenService;
+
+    @Autowired
     private ProjectUrlConfig projectUrlConfig;
 
     @GetMapping("/authorize")
@@ -45,9 +48,6 @@ public class WechatController {
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】 获取code, result={}",redirectUrl);
         return "redirect:" + redirectUrl;
-
-        //以下为使用借用的服务号的使用方法
-
     }
 
     @GetMapping("/userInfo")
@@ -64,6 +64,32 @@ public class WechatController {
         String openId = wxMpOAuth2AccessToken.getOpenId();
 
         return "redirect:" + returnUrl + "?openid=" + openId;
-//        return "redirect:" + returnUrl + "?openid=oTgZpwS5cH2oGp4cfGb4rZPF2dbY";
+    }
+
+    @GetMapping("/qrAuthorize")
+    public String qrAuthorize(@RequestParam("returnUrl") String returnUrl) {
+
+        //以下下是自己有服务号时使用的方法
+        String url = projectUrlConfig.getWechatMpAuthorize() + "/wechat/qrUserInfo";
+        //因为测试号没办法进行支付，这里用的为师兄干货这个测试服务号进行认证
+        String redirectUrl = wxOpenService.buildQrConnectUrl(url,WxConsts.QRCONNECT_SCOPE_SNSAPI_LOGIN,URLEncoder.encode(returnUrl));
+        log.info("【卖家端扫码登录】 获取code, result={}",redirectUrl);
+        return "redirect:" + redirectUrl;
+    }
+
+    @GetMapping("/qrUserInfo")
+    public String qrUserInfo(@RequestParam("code") String code,
+        @RequestParam("state") String returnUrl) {
+        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
+        try {
+            wxMpOAuth2AccessToken = wxOpenService.oauth2getAccessToken(code);
+        } catch (WxErrorException e) {
+            log.error("【卖家端扫码登录】{}", e);
+            throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
+        }
+
+        String openId = wxMpOAuth2AccessToken.getOpenId();
+
+        return "redirect:" + returnUrl + "?openid=" + openId;
     }
 }

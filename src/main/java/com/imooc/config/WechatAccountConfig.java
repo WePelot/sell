@@ -43,6 +43,17 @@ public class WechatAccountConfig {
      * 公众号APPSercert(借用的的公众号)
      */
     private String mcMpAppSecert;
+
+    /**
+     * 开放平台openid
+     */
+    private String openAppid;
+
+    /**
+     * 开放平台secert
+     */
+    private String openAppSecert;
+
     /**
      * 商户号
      */
@@ -62,4 +73,5 @@ public class WechatAccountConfig {
      * 支付完成后的异步通知地址.(很重要)
      */
     private String notifyUrl;
+
 }
