@@ -70,5 +70,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var websocket = null;
+        if('WebSocket' in window){
+          //判断浏览器是否支持webSocket
+          websocket = new WebSocket('ws://sellweb.natapp1.cc/websocket');
+//          websocket = new WebSocket('ws://localhost:8099/websocket');
+        }else{
+          alert("该浏览器不支持WebSocket");
+        }
+
+        websocket.onopen = function (event) {
+            console.log("建立连接");
+        };
+
+        websocket.onclose = function (event) {
+             console.log("连接关闭");
+        };
+
+        websocket.onmessage = function (event) {
+            console.log('收到消息：' + event.data);
+            //弹窗提醒，播放音乐
+        };
+
+        websocket.onerror = function () {
+            alert("WebSocket通信发送错误!");
+        };
+
+        window.onbeforeunload = function () {
+            websocket.close();
+        }
+    </script>
 </body>
 </html>

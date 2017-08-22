@@ -66,12 +66,14 @@ public class SellerUserController {
         //2. 将token写入redis
         String token = UUID.randomUUID().toString();
         //key,value,过期时间
-//        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX,token),openid, RedisConstant.EXPIRE,TimeUnit.SECONDS);
         redisTemplate.opsForValue().set(RedisConstant.TOKEN_PREFIX + token,openid, RedisConstant.EXPIRE,TimeUnit.SECONDS);
         //3. 将token写入cookie
         CookieUtil.set(response, CookieConstant.TOKEN, token, RedisConstant.EXPIRE);
         //4.设置成功后跳转列表页
         return new ModelAndView("redirect:" + projectUrlConfig.getSell() + "/seller/order/list");
+//        map.put("msg", "登录成功");
+//        map.put("redirectUrl", projectUrlConfig.getSell() + "/seller/order/list");
+//        return new ModelAndView("common/success", map);
     }
 
     @GetMapping("/logout")
@@ -88,7 +90,7 @@ public class SellerUserController {
         CookieUtil.set(response, CookieConstant.TOKEN, null, 0);
         //4.清除成功后跳转成功界面
         map.put("msg", ResultEnum.LOGOUT_SUCCESS.getMsg());
-        map.put("url", "/sell/seller/order/list");
+        map.put("redirectUrl", "/seller/order/list");
         return new ModelAndView("common/success", map);
     }
 }

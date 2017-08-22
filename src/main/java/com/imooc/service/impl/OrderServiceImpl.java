@@ -22,6 +22,7 @@ import com.imooc.repository.OrderMasterRepository;
 import com.imooc.service.OrderService;
 import com.imooc.service.PayService;
 import com.imooc.service.ProductInfoServcie;
+import com.imooc.service.WebSocket;
 import com.imooc.utils.KeyUtil;
 
 import java.math.BigDecimal;
@@ -59,6 +60,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private WebSocket webSocket;
 
     /**
      * 前端接口参数
@@ -111,6 +115,9 @@ public class OrderServiceImpl implements OrderService {
             .map(e -> new CartDTO(e.getProductId(), e.getProductQuantity())).collect(Collectors.toList());
         /*5.扣库存*/
         productInfoServcie.decreaseStock(cartDTOList);
+
+        //6.发送websocket消息
+        webSocket.onMessage("有新的订单");
         return orderDTO;
     }
 
