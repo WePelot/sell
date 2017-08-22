@@ -7,14 +7,20 @@
  */
 package com.imooc.handle;
 
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+
+import com.imooc.VO.ResultVO;
 import com.imooc.config.ProjectUrlConfig;
 import com.imooc.exception.SellException;
 import com.imooc.exception.SellerAuthorizeException;
+import com.imooc.utils.ResultVOUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -44,6 +50,14 @@ public class SellExceptionHandler {
 //            .concat(projectUrlConfig.getSell())
 //            .concat("/sell/seller/login"));
         return new ModelAndView("common/loginTip");
+    }
+
+
+    @ExceptionHandler(value = SellException.class)
+    @ResponseBody
+//    @ResponseStatus(INTERNAL_SERVER_ERROR)
+    public ResultVO handSellException(SellException e){
+        return ResultVOUtil.error(e.getCode(),e.getMessage());
     }
 
 }
