@@ -9,6 +9,7 @@ package com.imooc.VO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import lombok.Data;
@@ -20,7 +21,10 @@ import lombok.Data;
  * @since 2017-07-17 11:28
  */
 @Data
-public class ProductInfoVO {
+public class ProductInfoVO implements Serializable{
+
+    private static final long serialVersionUID = -3895834204864685262L;
+
     @JsonProperty("id")
     private String productId;
 

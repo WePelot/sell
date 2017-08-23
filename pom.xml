@@ -98,6 +98,8 @@
 	</dependencies>
 
 	<build>
+		<!-- 打出的jar包名称 -->
+		<finalName>sell</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

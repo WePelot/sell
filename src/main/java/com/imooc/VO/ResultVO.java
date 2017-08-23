@@ -7,6 +7,8 @@
  */
 package com.imooc.VO;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
@@ -17,7 +19,9 @@ import lombok.Data;
  * @since 2017-07-17 11:09
  */
 @Data
-public class ResultVO<T> {
+public class ResultVO<T>  implements Serializable{
+
+    private static final long serialVersionUID = 3068837394742385883L;
     /*错误码*/
     private Integer code;
     /*提示信息*/
