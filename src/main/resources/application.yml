@@ -10,7 +10,7 @@ spring:
   jackson:
     default-property-inclusion: non_null
   redis:
-    host: 192.168.119.103
+    host: 192.168.121.186
     port: 6379
 server:
 #  context-path: /sell
@@ -33,7 +33,7 @@ wechat:
 projectUrl:
   wechatMpAuthorize: http://sellweb.natapp1.cc
   wechatOpenAuthorize: http:/sellweb.natapp1.cc
-  sell: http:/sellweb.natapp1.cc
+  sell: http://sellweb.natapp1.cc
 
 #logging:
 #  pattern:
