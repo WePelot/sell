@@ -71,9 +71,6 @@ public class SellerUserController {
         CookieUtil.set(response, CookieConstant.TOKEN, token, RedisConstant.EXPIRE);
         //4.设置成功后跳转列表页
         return new ModelAndView("redirect:" + projectUrlConfig.getSell() + "/seller/order/list");
-//        map.put("msg", "登录成功");
-//        map.put("redirectUrl", projectUrlConfig.getSell() + "/seller/order/list");
-//        return new ModelAndView("common/success", map);
     }
 
     @GetMapping("/logout")
