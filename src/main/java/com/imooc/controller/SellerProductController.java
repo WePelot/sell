@@ -9,8 +9,6 @@ package com.imooc.controller;
 
 import com.imooc.dataobject.ProductCategory;
 import com.imooc.dataobject.ProductInfo;
-import com.imooc.dto.OrderDTO;
-import com.imooc.enums.ResultEnum;
 import com.imooc.exception.SellException;
 import com.imooc.form.ProductForm;
 import com.imooc.service.CategoryService;
@@ -24,8 +22,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;

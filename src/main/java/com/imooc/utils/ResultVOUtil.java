@@ -9,8 +9,6 @@ package com.imooc.utils;
 
 import com.imooc.VO.ResultVO;
 
-import java.util.Objects;
-
 /**
  *
  * 结果转化类
