@@ -17,7 +17,6 @@ import com.imooc.service.BuyerService;
 import com.imooc.service.OrderService;
 import com.imooc.utils.ResultVOUtil;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +64,7 @@ public class BuyOrderController {
             throw new SellException(ResultEnum.CART_EMPTY);
         }
         OrderDTO result = orderService.create(orderDTO);
-        Map<String,String> map =  new HashMap<String,String>();
+        Map<String,String> map =  new HashMap<>();
         map.put("orderId", result.getOrderId());
         return ResultVOUtil.success(map);
     }

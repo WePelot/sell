@@ -12,18 +12,14 @@ import com.imooc.VO.ProductVO;
 import com.imooc.VO.ResultVO;
 import com.imooc.dataobject.ProductCategory;
 import com.imooc.dataobject.ProductInfo;
-import com.imooc.enums.ResultEnum;
-import com.imooc.exception.SellException;
 import com.imooc.service.CategoryService;
 import com.imooc.service.ProductInfoServcie;
 import com.imooc.utils.ResultVOUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -53,18 +49,6 @@ public class BuyerProductController {
         //1.查询所有上架的商品
         List<ProductInfo> productInfoList = productInfoServcie.findUpAll();
         //2. 查询出所有的类目
-
-        /**
-         * 这里有两种方法，一种是传统的方法-使用for循环遍历，一种是java8 的lambdas写法
-         */
-
-        //for循环遍历的方式
-//        List<Integer> categoryTypeList = new ArrayList<>();
-//        for(ProductInfo productInfo: productInfoList){
-//            categoryTypeList.add(productInfo.getCategoryType());
-//        }
-
-        //java8 的lambdas写法
         List<Integer> categoryTypeList = productInfoList.stream()
             .map(e -> e.getCategoryType())
             .collect(Collectors.toList());
@@ -78,7 +62,7 @@ public class BuyerProductController {
             productVO = new ProductVO();
             productVO.setCategoryname(category.getCategoryName());
             productVO.setCategoryType(category.getCategoryType());
-            ArrayList<ProductInfoVO> productInfoVOList= new ArrayList<ProductInfoVO>();
+            ArrayList<ProductInfoVO> productInfoVOList= new ArrayList<>();
             //遍历上架商品
             for (ProductInfo productInfo: productInfoList){
                 //判断商品是不是属于该类目
@@ -102,16 +86,6 @@ public class BuyerProductController {
         List<ProductInfo> productInfoList = productInfoServcie.findUpAll();
         //2. 查询出所有的类目
 
-        /**
-         * 这里有两种方法，一种是传统的方法-使用for循环遍历，一种是java8 的lambdas写法
-         */
-
-        //for循环遍历的方式
-        //        List<Integer> categoryTypeList = new ArrayList<>();
-        //        for(ProductInfo productInfo: productInfoList){
-        //            categoryTypeList.add(productInfo.getCategoryType());
-        //        }
-
         //java8 的lambdas写法
         List<Integer> categoryTypeList = productInfoList.stream()
             .map(e -> e.getCategoryType())
@@ -120,13 +94,13 @@ public class BuyerProductController {
         List<ProductCategory> productCategoryList = categoryService.findByCategoryTypeIn(categoryTypeList);
 
         //3.拼装成前端需要的数据
-        List<ProductVO> productVOList = new ArrayList<ProductVO>();
+        List<ProductVO> productVOList = new ArrayList<>();
         ProductVO productVO = null;
         for (ProductCategory category: productCategoryList){
             productVO = new ProductVO();
             productVO.setCategoryname(category.getCategoryName());
             productVO.setCategoryType(category.getCategoryType());
-            ArrayList<ProductInfoVO> productInfoVOList= new ArrayList<ProductInfoVO>();
+            ArrayList<ProductInfoVO> productInfoVOList= new ArrayList<>();
             //遍历上架商品
             for (ProductInfo productInfo: productInfoList){
                 //判断商品是不是属于该类目
