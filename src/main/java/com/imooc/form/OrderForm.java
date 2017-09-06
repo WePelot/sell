@@ -7,8 +7,6 @@
  */
 package com.imooc.form;
 
-import javax.validation.Valid;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
