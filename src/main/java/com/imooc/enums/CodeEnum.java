@@ -8,7 +8,6 @@
 package com.imooc.enums;
 
 /**
- * TODO
  *
  * @author hongcj
  * @version V1.0
