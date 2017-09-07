@@ -48,7 +48,7 @@ public class RedisLock {
         //2.判断当前值是否已过期，过期情况进行下面操作
         if (!StringUtils.isEmpty(currentValue) && Long.parseLong(currentValue) < System.currentTimeMillis()){
             //3.获取设置前的值,加锁
-            //这里是为了处理多线程并发时，key和value相同时，保证只有线程能获取到锁
+            //这里是为了处理多线程并发时，key和value相同时，保证只有一个线程能获取到锁
             //此处运用了redis的GETSET命令特性
             //执行过程如下：自动将key对应到value并且返回原来key对应的value。
             //redis中文网详细介绍地址 http://www.redis.cn/commands/getset.html
