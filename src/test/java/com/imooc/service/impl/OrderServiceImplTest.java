@@ -34,7 +34,7 @@ public class OrderServiceImplTest {
     @Autowired
     private OrderServiceImpl orderService;
 
-    private final static String BUYER_OPENID = "678998678";
+    private final static String BUYER_OPENID = "oTgZpwS5cH2oGp4cfGb4rZPF2dbY";
 
     @Test
     public void create() throws Exception {
