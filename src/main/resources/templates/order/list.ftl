@@ -104,8 +104,8 @@
         var websocket = null;
         if('WebSocket' in window){
           //判断浏览器是否支持webSocket
-          websocket = new WebSocket('ws://sellweb.natapp1.cc/websocket');
-//          websocket = new WebSocket('ws://localhost:8099/websocket');
+//          websocket = new WebSocket('ws://sellweb.natapp1.cc/websocket');
+          websocket = new WebSocket('ws://localhost:8099/websocket');
         }else{
           alert("该浏览器不支持WebSocket");
         }

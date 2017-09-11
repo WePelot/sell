@@ -61,11 +61,6 @@ public class DataSourceConfig {
         tableList.add("order_detail_2");
         tableList.add("order_detail_3");
         tableList.add("order_detail_4");
-        tableList.add("order_detail_5");
-        tableList.add("order_detail_6");
-        tableList.add("order_detail_7");
-        tableList.add("order_detail_8");
-        tableList.add("order_detail_9");
 
         TableRule orderTableRule = TableRule.builder("order_detail")
             .actualTables(tableList)

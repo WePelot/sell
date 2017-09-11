@@ -38,18 +38,20 @@ public final class ModuloTableShardingAlgorithm implements SingleKeyTableShardin
      */
     @Override
     public String doEqualSharding(final Collection<String> tableNames, final ShardingValue<String> shardingValue) {
-
+        //ds0为储存末尾数为0,，2,4,6,8的订单详情，ds1寸纯末尾为1,3,5,7,9的订单详情
         Integer shardingValueLast = ShardingUtil.getShardingValueLast(shardingValue);
         if(shardingValueLast == null){
             log.error("获取分片键最后一位数字错误,shardingValue={}",shardingValue);
             throw new SellException(ResultEnum.SHARDING_FALUE);
         }
 
+        //判断是奇数还是偶数
         for (String each : tableNames) {
-            if (each.endsWith(shardingValueLast+ "")) {
+            if (each.endsWith(shardingValueLast / 2 + "")) {
                 return each;
             }
         }
+
         throw new IllegalArgumentException();
     }
 
@@ -74,7 +76,7 @@ public final class ModuloTableShardingAlgorithm implements SingleKeyTableShardin
                 throw new SellException(ResultEnum.SHARDING_FALUE);
             }
             for (String tableName : tableNames) {
-                if (tableName.endsWith(shardingValueLast + "")) {
+                if (tableName.endsWith(shardingValueLast/2 + "")) {
                     result.add(tableName);
                 }
             }
